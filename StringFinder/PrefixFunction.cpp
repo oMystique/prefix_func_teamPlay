@@ -3,7 +3,7 @@
 
 std::vector<int> GetSearchPrefixFunctions(const std::string &needle)
 {
-	if (needle.size() >= 1000)
+	if (needle.size() > 1000)
 	{
 		throw std::out_of_range("Input string size should be less than 1000 chars.");
 	}

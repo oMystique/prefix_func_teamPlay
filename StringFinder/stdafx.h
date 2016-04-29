@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 #if defined(_MSC_VER)
 #pragma warning (disable: 4512)

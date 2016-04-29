@@ -11,4 +11,6 @@ public:
 
 private:
 	std::string m_needle;
+	//std::map<char, size_t> m_alphabet;
+	std::vector<int> m_alphabet;
 };

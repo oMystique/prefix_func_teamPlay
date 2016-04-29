@@ -8,7 +8,8 @@ unsigned CStringUtils::Count(const std::string &text, const CSearchDFA &dfa)
 {
 	size_t shift = 0;
 	unsigned count = 0;
-	for (;;) {
+	for (;;)
+	{
 		shift = dfa.Find(text, shift);
 		if (shift == std::string::npos)
 		{
@@ -34,7 +35,8 @@ std::vector<size_t> CStringUtils::FindAll(const std::string &text, const CSearch
 {
 	std::vector<size_t> positions;
 	size_t shift = 0;
-	for (;;) {
+	for (;;) 
+	{
 		shift = dfa.Find(text, shift);
 		if (shift == std::string::npos)
 		{
@@ -45,8 +47,3 @@ std::vector<size_t> CStringUtils::FindAll(const std::string &text, const CSearch
 	};
 	return positions;
 }
-
-//// TODO: реализовать метод
-//(void)text;
-//(void)dfa;
-//throw std::runtime_error("not implemented");

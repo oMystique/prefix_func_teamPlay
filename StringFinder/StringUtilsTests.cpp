@@ -107,35 +107,12 @@ BOOST_AUTO_TEST_CASE(test2)
 		ChekValueVectors(GetSearchPrefixFunctions(textString), prefixFunctionsResult);
 	}
 
-	//BOOST_AUTO_TEST_CASE(can_returns_position_substring)
-	//{
-	//	CSearchDFA dfa;
-	//	dfa.Compile("abc");
-	//	size_t truePosition = 3;
-	//	BOOST_CHECK_EQUAL(dfa.Find("abcabcabcabc", 3), truePosition);
-	//}
-
-	//BOOST_AUTO_TEST_CASE(than_word_not_found_return_size_original_string)
-	//{
-	//	CSearchDFA dfa;
-	//	string originalString = "abcabcabcabc";
-	//	dfa.Compile("ttt");
-	//	size_t truePosition = 3;
-	//	BOOST_CHECK_EQUAL(dfa.Find(originalString, 3), originalString.size());
-	//}
-
-	//BOOST_AUTO_TEST_CASE(than_word_not_found_return_size_original_string)
-	//{
-	//	CSearchDFA dfa;
-	//	string originalString;
-	//	for (int i = 0; i < 100'000; ++i)
-	//	{
-	//		originalString += "a";
-	//	}
-
-	//	dfa.Compile("aaa");
-	//	size_t truePosition = 999'997;
-	//	BOOST_CHECK_EQUAL(dfa.Find(originalString, 999'997), truePosition);
-	//}
+	BOOST_AUTO_TEST_CASE(can_returns_position_substring)
+	{
+		CSearchDFA dfa;
+		dfa.Compile("abc");
+		size_t truePosition = 3;
+		BOOST_CHECK_EQUAL(dfa.Find("abcabcabcabc", 3), truePosition);
+	}
 
 	BOOST_AUTO_TEST_SUITE_END()

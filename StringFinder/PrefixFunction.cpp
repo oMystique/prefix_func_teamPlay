@@ -16,7 +16,7 @@ std::vector<int> GetSearchPrefixFunctions(const std::string &needle)
 		for (size_t i = 1; i < needle.size(); ++i)
 		{
 
-			int j = result[i - 1];
+			size_t j = result[i - 1];
 
 			while (j > 0 && needle[i] != needle[j])
 			{

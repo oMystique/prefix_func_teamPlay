@@ -2,21 +2,21 @@
 #include "StringUtils.h"
 #include "SearchDFA.h"
 #include <boost/utility/string_ref.hpp>
-
+#include < iostream>
 // Метод возвращает количество вхождений искомой подстроки в переданный текст.
 unsigned CStringUtils::Count(const std::string &text, const CSearchDFA &dfa)
 {
 	size_t shift = 0;
-	size_t count = 0;
-	do
-	{
+	unsigned count = 0;
+	for (;;) {
 		shift = dfa.Find(text, shift);
-		if (shift < text.size())
+		if (shift == std::string::npos)
 		{
-			count++;
+			break;
 		}
-	} while (shift < text.size());
-	
+		++count;
+		++shift;
+	};
 	return count;
 }
 
@@ -34,14 +34,15 @@ std::vector<size_t> CStringUtils::FindAll(const std::string &text, const CSearch
 {
 	std::vector<size_t> positions;
 	size_t shift = 0;
-	do
-	{
+	for (;;) {
 		shift = dfa.Find(text, shift);
-		if (shift < text.size())
+		if (shift == std::string::npos)
 		{
-			positions.push_back(shift);
+			break;
 		}
-	} while (shift < text.size());
+		positions.push_back(shift);
+		++shift;
+	};
 	return positions;
 }
 

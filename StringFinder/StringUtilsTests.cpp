@@ -2,6 +2,7 @@
 #include "StringUtils.h"
 #include "SearchDFA.h"
 #include <sstream>
+#include "PrefixFunction.h"
 #include <boost/algorithm/string.hpp>
 
 using std::vector;
@@ -38,4 +39,26 @@ BOOST_AUTO_TEST_SUITE(StringUtils_class)
 		BOOST_CHECK(matches == expected);
 		
 	}
-BOOST_AUTO_TEST_SUITE_END()
+	void ChekValueVectors(std::vector<int> &prefixFunctions, std::vector<int> &result)
+	{
+		for (size_t i = 0; i < prefixFunctions.size(); ++i)
+		{
+			BOOST_REQUIRE_EQUAL(prefixFunctions[i], result[i]);
+		}
+	}
+
+	BOOST_AUTO_TEST_CASE(can_return_vector_prefix_functions)
+	{
+		std::vector<int> prefixFunctions = GetSearchPrefixFunctions("abcabcd");
+		std::vector<int> prefixFunctionsResault = { 0, 0, 0, 1, 2, 3, 0 };
+		BOOST_REQUIRE_EQUAL(prefixFunctions.size(), prefixFunctionsResault.size());
+		ChekValueVectors(prefixFunctions, prefixFunctionsResault);
+	}
+	BOOST_AUTO_TEST_CASE(can_return_vector_empty)
+	{
+		std::vector<int> prefixFunctions = GetSearchPrefixFunctions("abcabcd");
+		std::vector<int> prefixFunctionsResault = { 0, 0, 0, 1, 2, 3, 0 };
+		BOOST_REQUIRE_EQUAL(prefixFunctions.size(), prefixFunctionsResault.size());
+		ChekValueVectors(prefixFunctions, prefixFunctionsResault);
+	}
+	BOOST_AUTO_TEST_SUITE_END()

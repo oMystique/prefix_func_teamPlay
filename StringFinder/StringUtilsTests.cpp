@@ -88,4 +88,22 @@ BOOST_AUTO_TEST_SUITE(StringUtils_class)
 		ChekValueVectors(GetSearchPrefixFunctions(textString), prefixFunctionsResult);
 	}
 
+	////////////////////////////////////
+	BOOST_AUTO_TEST_CASE(can_returns_position_substring)
+	{
+		CSearchDFA dfa;
+		dfa.Compile("abcabcabcabc");
+		size_t truePosition = 3;
+		BOOST_CHECK_EQUAL(dfa.Find("abc", 3), truePosition);
+	}
+
+	BOOST_AUTO_TEST_CASE(than_word_not_found_return_size_original_string)
+	{
+		CSearchDFA dfa;
+		string originalString = "abcabcabcabc";
+		dfa.Compile(originalString);
+		size_t truePosition = 3;
+		BOOST_CHECK_EQUAL(dfa.Find("ttt", 3), originalString.size());
+	}
+
 	BOOST_AUTO_TEST_SUITE_END()
